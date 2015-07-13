@@ -1,0 +1,38 @@
+Description: Replace date timestamp by SOURCE_DATE_EPOCH env var in xgettext
+Author: Dhole <dhole@openmailbox.org>
+
+---
+
+--- gettext-0.19.4.orig/gettext-tools/src/xgettext.c
++++ gettext-0.19.4/gettext-tools/src/xgettext.c
+@@ -3410,6 +3410,7 @@ construct_header ()
+   message_ty *mp;
+   char *msgstr;
+   char *comment;
++  char *source_date_epoch;
+   static lex_pos_ty pos = { __FILE__, __LINE__ };
+ 
+   if (package_name != NULL)
+@@ -3431,7 +3432,21 @@ the MSGID_BUGS_ADDRESS variable there; o
+ specify an --msgid-bugs-address command line option.\n\
+ ")));
+ 
+-  time (&now);
++  /* Allow the date and time to be set externally by an exported
++     environment variable to enable reproducible builds. */
++  source_date_epoch = getenv ("SOURCE_DATE_EPOCH");
++  if (source_date_epoch)
++    {
++      errno = 0;
++      now = (time_t) strtol (source_date_epoch, NULL, 10);
++      if (errno != 0)
++        error (EXIT_FAILURE, errno, _("\
++SOURCE_DATE_EPOCH=\"%s\" is not a valid number"), source_date_epoch);
++      setenv("TZ", "UTC", 1);
++    }
++  else
++    time (&now);
++
+   timestring = po_strftime (&now);
+ 
+   msgstr = xasprintf ("\
