@@ -13,7 +13,7 @@ Author: Dhole <dhole@openmailbox.org>
    static lex_pos_ty pos = { __FILE__, __LINE__ };
  
    if (package_name != NULL)
-@@ -3431,7 +3432,21 @@ the MSGID_BUGS_ADDRESS variable there; o
+@@ -3431,7 +3432,24 @@ the MSGID_BUGS_ADDRESS variable there; o
  specify an --msgid-bugs-address command line option.\n\
  ")));
  
@@ -28,6 +28,9 @@ Author: Dhole <dhole@openmailbox.org>
 +      if (errno != 0)
 +        error (EXIT_FAILURE, errno, _("\
 +SOURCE_DATE_EPOCH=\"%s\" is not a valid number"), source_date_epoch);
++
++      /* The function po_strftime uses localtime() to parse the timestamp, so 
++         we need to fix the environment timezone to get reproducible results */
 +      setenv("TZ", "UTC", 1);
 +    }
 +  else
