@@ -1,3 +1,11 @@
+gettext (0.19.5.1-1.0~reproducible1) UNRELEASED; urgency=medium
+
+  * Non-maintainer upload.
+  * Add support for reproducible builds by using $SOURCE_DATE_EPOCH as the
+    date on creation of PO files with xgettext.
+
+ -- Eduard Sanou <dhole@openmailbox.org>  Tue, 04 Aug 2015 18:43:52 +0200
+
 gettext (0.19.5.1-1) unstable; urgency=medium
 
   * New upstream release.
