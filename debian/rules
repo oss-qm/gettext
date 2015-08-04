@@ -59,13 +59,13 @@ clean:
 	rm -f `find . -name "*~"`
 	rm -rf debian/tmp debian/files* core debian/substvars debian/a.out
 	cd debian && rm -rf gettext-base gettext gettext-el gettext-doc \
-		autopoint libgettextpo0 libasprintf0c2 libgettextpo-dev libasprintf-dev
+		autopoint libgettextpo0 libasprintf0v5 libgettextpo-dev libasprintf-dev
 
 binary-arch: build
 	debian/rules gettext-base
 	debian/rules gettext
 	debian/rules libgettextpo0
-	debian/rules libasprintf0c2
+	debian/rules libasprintf0v5
 	debian/rules libgettextpo-dev
 	debian/rules libasprintf-dev
 
@@ -213,7 +213,7 @@ libgettextpo0: build
 		xargs -0r touch -h --date='$(BUILD_DATE)'
 	dpkg --build debian/$@ ..
 
-libasprintf0c2: build
+libasprintf0v5: build
 	rm -rf debian/$@
 	install -d debian/$@/DEBIAN debian/$@/usr/share/doc/$@
 	cd debian/$@ && install -d usr/lib/$(DEB_HOST_MULTIARCH)
@@ -371,4 +371,4 @@ build-arch: build
 build-indep: build
 
 .PHONY: binary binary-arch binary-indep build-arch build-indep clean
-.PHONY: gettext-base gettext gettext-el gettext-doc autopoint libgettextpo0 libasprintf0c2 libgettextpo-dev libasprintf-dev
+.PHONY: gettext-base gettext gettext-el gettext-doc autopoint libgettextpo0 libasprintf0v5 libgettextpo-dev libasprintf-dev
