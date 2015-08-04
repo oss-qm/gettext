@@ -11,7 +11,7 @@ Section: utils
 Priority: standard
 Architecture: any
 Multi-Arch: foreign
-Depends: ${shlibs:Depends}, libasprintf0c2 (>= 0.18.1.1-6)
+Depends: ${shlibs:Depends}, libasprintf0v5
 Description: GNU Internationalization utilities for the base system
  This package includes the gettext and ngettext programs which allow
  other packages to internationalize the messages given by shell scripts.
@@ -70,15 +70,15 @@ Description: GNU Internationalization library
  This package contains the libgettextpo shared library for interfacing
  programmatically with GNU gettext .po files.
 
-Package: libasprintf0c2
+Package: libasprintf0v5
 Section: libs
 Priority: standard
 Architecture: any
 Multi-Arch: same
 Pre-Depends: multiarch-support
 Depends: ${shlibs:Depends}
-Breaks: gettext-base (<< 0.18.1.1-6)
-Replaces: gettext-base (<< 0.18.1.1-6)
+Breaks: gettext-base (<< 0.18.1.1-6), libasprintf0c2
+Replaces: gettext-base (<< 0.18.1.1-6), libasprintf0c2
 Description: GNU library to use fprintf and friends in C++
  This package contains the libasprintf shared library which makes the
  C formatted output routines (fprintf et al.) usable in C++ programs,
@@ -99,7 +99,7 @@ Package: libasprintf-dev
 Section: libdevel
 Architecture: any
 Multi-Arch: same
-Depends: libasprintf0c2 (= ${binary:Version})
+Depends: libasprintf0v5 (= ${binary:Version})
 Suggests: gettext-doc
 Breaks: gettext (<< 0.18.1.1-10)
 Replaces: gettext (<< 0.18.1.1-10)

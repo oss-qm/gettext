@@ -1,0 +1,16 @@
+From: Santiago Vila <sanvila@debian.org>
+Subject: autopoint from gettext 0.19.5.1 is buggy in some use cases
+
+See thread with above subject in bug-gettext@gnu.org
+
+--- a/gettext-tools/misc/gettextize.in
++++ b/gettext-tools/misc/gettextize.in
+@@ -22,7 +22,7 @@
+ 
+ progname=$0
+ package=@PACKAGE@
+-version=@VERSION@
++version=0.19.5
+ 
+ # Set variables
+ # - gettext_datadir     directory where the data files are stored.
