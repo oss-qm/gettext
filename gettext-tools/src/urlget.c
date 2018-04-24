@@ -268,7 +268,7 @@ fetch (const char *url, const char *file)
 
 #if USEJAVA
   /* First try: using Java.  */
-  {
+  if (0) {
     const char *class_name = "gnu.gettext.GetURL";
     const char *gettextjexedir;
     const char *gettextjar;
