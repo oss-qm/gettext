@@ -3,7 +3,19 @@ Section: devel
 Priority: optional
 Maintainer: Santiago Vila <sanvila@debian.org>
 Standards-Version: 3.9.6
-Build-Depends: g++ (>= 4:7), debhelper (>= 9), fastjar <!nojava>, default-jdk <!nojava>, file, libncurses5-dev, libxml2-dev, libglib2.0-dev, libcroco3-dev, xz-utils, libunistring-dev
+Build-Depends: g++ (>= 4.7),
+               debhelper (>= 9),
+               fastjar,
+               default-jdk,
+               file,
+               libncurses5-dev,
+               libxml2-dev,
+               libglib2.0-dev,
+               libcroco3-dev,
+               xz-utils,
+               libunistring-dev,
+               autoconf,
+               automake
 Homepage: http://www.gnu.org/software/gettext/
 
 Package: gettext-base
