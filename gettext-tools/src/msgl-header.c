@@ -166,6 +166,7 @@ msgdomain_list_set_header_field (msgdomain_list_ty *mdlp,
               }
 
             mp->msgstr = new_header;
+            mp->msgstr_len = strlen (new_header) + 1;
           }
     }
 }
@@ -235,5 +236,6 @@ message_list_delete_header_field (message_list_ty *mlp,
           }
         
         mp->msgstr = new_header;
+        mp->msgstr_len = strlen (new_header) + 1;
       }
 }
