@@ -28,7 +28,11 @@
              1.3             inner classes
              1.4             assert keyword
              1.5             generic classes and methods
-             1.6             (not yet supported)
+             1.6             (not supported)
+             1.7             switch(string)
+             1.8             lambdas
+             9               private interface methods
+            10               type inference for local variables
    target_version can be:  classfile version:
              1.1                 45.3
              1.2                 46.0
@@ -36,6 +40,10 @@
              1.4                 48.0
              1.5                 49.0
              1.6                 50.0
+             1.7                 51.0
+             1.8                 52.0
+             9                   53.0
+            10                   54.0
    target_version can also be given as NULL. In this case, the required
    target_version is determined from the found JVM (see javaversion.h).
    Specifying target_version is useful when building a library (.jar) that is
@@ -44,13 +52,19 @@
    It is unreasonable to ask for:
      - target_version < 1.4 with source_version >= 1.4, or
      - target_version < 1.5 with source_version >= 1.5, or
-     - target_version < 1.6 with source_version >= 1.6,
-   because even Sun's javac doesn't support these combinations.
+     - target_version < 1.6 with source_version >= 1.6, or
+     - target_version < 1.7 with source_version >= 1.7, or
+     - target_version < 1.8 with source_version >= 1.8, or
+     - target_version < 9 with source_version >= 9, or
+     - target_version < 10 with source_version >= 10,
+   because even Sun's/Oracle's javac doesn't support these combinations.
    It is redundant to ask for a target_version > source_version, since the
    smaller target_version = source_version will also always work and newer JVMs
-   support the older target_versions too. Except for the case
-   target_version = 1.4, source_version = 1.3, which allows gcj versions 3.0
-   to 3.2 to be used.
+   support the older target_versions too. Except for the cases
+     - target_version = 1.4, source_version = 1.3, which allows gcj versions 3.0
+       to 3.2 to be used,
+     - target-version = 1.6, source-version = 1.5, which allows gcj versions
+       >= 4.3 to be used.
 
    directory is the target directory. The .class file for class X.Y.Z is
    written at directory/X/Y/Z.class. If directory is NULL, the .class

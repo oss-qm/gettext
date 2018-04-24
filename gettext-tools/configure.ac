@@ -44,7 +44,7 @@ fi
 AC_SUBST([BUILDJAVAEXE])
 
 gt_JAVAEXEC
-gt_JAVACOMP([1.3])
+gt_JAVACOMP([1.5])
 AC_CHECK_PROG([JAR], [jar], [jar])
 if test -n "$HAVE_JAVACOMP" && test -n "$JAR" && test "$JAVA_CHOICE" != no; then
   BUILDJAVA=yes
