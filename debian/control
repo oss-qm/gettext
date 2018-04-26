@@ -15,7 +15,8 @@ Build-Depends: g++ (>= 4.7),
                xz-utils,
                libunistring-dev,
                autoconf,
-               automake
+               automake,
+               texinfo
 Homepage: http://www.gnu.org/software/gettext/
 
 Package: gettext-base
